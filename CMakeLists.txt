@@ -122,5 +122,7 @@ set_target_properties(${APP_NAME} PROPERTIES
                       MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/Info.plist
                       XCODE_ATTRIBUTE_TARGETED_DEVICE_FAMILY "1"
                       XCODE_ATTRIBUTE_CLANG_ENABLE_OBJC_ARC YES
-                      XCODE_ATTRIBUTE_COMBINE_HIDPI_IMAGES "NO")
+                      XCODE_ATTRIBUTE_COMBINE_HIDPI_IMAGES "NO"
+                      XCODE_ATTRIBUTE_LD_RUNPATH_SEARCH_PATHS "@executable_path/Frameworks"
+                      XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER ${BUNDLE_IDENTIFIER})
 
