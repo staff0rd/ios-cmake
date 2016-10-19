@@ -1,5 +1,7 @@
 cmake_minimum_required (VERSION 3.3.2)
 
+enable_language(Swift)
+
 project(your_project)
 
 include(BundleUtilities)
@@ -30,16 +32,9 @@ set(MACOSX_BUNDLE_BUNDLE_VERSION "1.0")
 set(MACOSX_BUNDLE_COPYRIGHT "Copyright YOU")
 set(MACOSX_DEPLOYMENT_TARGET "8.0")
 
-set(APP_HEADER_FILES
-  ./AppDelegate.h
-  ./ViewController.h
-  ./Prefix.pch
-)
-
 set(APP_SOURCE_FILES
-  ./AppDelegate.m
-  ./ViewController.m
-  ./main.m
+  ./AppDelegate.swift
+  ./ViewController.swift
 )
 
 set(RESOURCES
@@ -54,7 +49,6 @@ MESSAGE(STATUS ${APP_SOURCE_FILES})
 add_executable(
     ${APP_NAME}
     MACOSX_BUNDLE
-    ${APP_HEADER_FILES}
     ${APP_SOURCE_FILES}
     ${RESOURCES}
 )
@@ -124,7 +118,7 @@ set_target_properties(${APP_NAME} PROPERTIES
                       XCODE_ATTRIBUTE_GCC_PRECOMPILE_PREFIX_HEADER "YES"
                       XCODE_ATTRIBUTE_IPHONEOS_DEPLOYMENT_TARGET ${DEPLOYMENT_TARGET}
                       XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY ${CODESIGNIDENTITY}
-                      MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/plist.in
+                      MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/Info.plist
                       XCODE_ATTRIBUTE_TARGETED_DEVICE_FAMILY "1"
                       XCODE_ATTRIBUTE_CLANG_ENABLE_OBJC_ARC YES
                       XCODE_ATTRIBUTE_COMBINE_HIDPI_IMAGES "NO")
